@@ -126,10 +126,23 @@ class KMZ:
                     [c-1  , c    , c+1],
                     [c-44, c-43, c-42],
                     ]
+
+                edges = [0, 0, 0, 0]
+                for item in self.globe_matrix:
+                    for i, row in item.iterrows():
+                        row = row.tolist()
+                        if int(row[0]) == images[0][0]:
+                            edges[0] = row[3]
+                            edges[3] = row[6]
+                        elif int(row[0]) == images[2][2]:
+                            edges[1] = row[4]
+                            edges[2] = row[5]
+
                 for i, s in enumerate(images):
                     for j, g in enumerate(s):
                         images[i][j] = f[0]+str(g)+f[1]
-                return self._generate_image(self.load_images(images), fullvh=True).show()
+
+                return edges, self._generate_image(self.load_images(images), fullvh=True)
             else:
                 return Image.open(self.kmz_zip.open(ZIP_KMZ_IMG_FOLDER+"/"+images))
         else:
