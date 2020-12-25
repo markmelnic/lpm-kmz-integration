@@ -15,7 +15,10 @@ class LPM:
         self.gmaps = googlemaps.Client(key=geo_key)
 
     def get_pollution(self, location: str) -> list:
-        user_coords = self._user_location(location)
+        if type(location) == str:
+            user_coords = self._user_location(location)
+        else:
+            user_coords = location
         item = self.kmz_obj.coords_item(user_coords)
         edges, image = self.kmz_obj.load_images(item[1], single=True, neighbours=True)
         closest_unique_spots = self._find_pollution_coords(user_coords, edges, image)
