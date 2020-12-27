@@ -14,5 +14,5 @@ COLORS = [
     #(0, 0, 0),        # 12 black
 ]
 
-HI_P = COLORS[:5]
-LO_P = COLORS[6:11] # skipped black since it's usually ocean
+HI_P = COLORS[:6]
+LO_P = COLORS[6:10] # skipped black since it's usually ocean
