@@ -1,0 +1,8 @@
+geopy
+googlemaps
+lxml
+pandas
+Pillow
+python-dotenv
+requests
+scalg
