@@ -1,6 +1,15 @@
-import os, secrets
-from kmz_processor import KMZ
-from lpm import LPM
+from dotenv import load_dotenv
+load_dotenv()
 
-obj = LPM(KMZ(), os.getenv('GEOCODE_KEY'), os.getenv('WEATHER_KEY'))
+from os import getenv
+from importlib import import_module
+lpm = import_module("light-pollution-mapper")
+kmz = import_module("kmz-processor")
+
+obj = lpm.LPM(
+    kmz.KMZ(),
+    getenv('GEOCODE_KEY'),
+    getenv('WEATHER_KEY')
+)
+
 print(obj.get_pollution("Amsterdam"))
